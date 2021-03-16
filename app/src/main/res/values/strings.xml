@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">DrawLayout_CustomView</string>
+    <string name="hint_search">Bạn tìm gì hôm nay ?</string>
+    <string name="title_top_sold">Sản phẩm bán chạy</string>
+    <string name="view_all_product">Xem tất cả></string>
+    <string name="title_sale_product">Sản phẩm giảm giá</string>
+    <string name="title_viewed_product">Sản phẩm đã xem</string>
+    <string name="title_japanese_product">Hàng Nhật</string>
+    <string name="title_vietnamese_product">Hàng Việt</string>
+    <string name="title_category">Danh mục</string>
+    <string name="title_hot_product">Từ khóa HOT</string>
+    <string name="product_price">35.000¥</string>
+    <string name="sale_price">65.000¥</string>
+    <string name="product_sold">Đã bán 125</string>
+    <string name="product_name">Áo</string>
+    <string name="category_name">wefwuef</string>
+    <string name="category_fashion">Thời trang</string>
+    <string name="category_mom_and_son">Mẹ và bé</string>
+    <string name="category_food">Thực phẩm</string>
+    <string name="category_electrics">Thiết bị điện tử</string>
+    <string name="category_books">Sách</string>
+    <string name="category_beauty">Làm đẹp &amp; sức khỏe</string>
+    <string name="category_accessory">Phụ kiện thời trang</string>
+    <string name="category_house_device">Thiết bị gia dụng</string>
+    <string name="category_home">Nhà cửa</string>
+    <string name="category_games">Đồ chơi</string>
+    <string name="category_other">Khác</string>
+    <string name="keyword_1">Rau hữu cơ</string>
+    <string name="product_location">Nhật Bản</string>
+    <string name="sale_percent">35%</string>
+    <string name="description_cart">Giỏ hàng</string>
+    <string name="description_change_currency">Thay đổi tiền tệ</string>
+    <string name="description_back">Trở lại</string>
+
+</resources>

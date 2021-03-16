@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProductView">
+        <attr name="productImageHeight" format="dimension"/>
+        <attr name="productImageWidth" format="dimension"/>
+        <attr name="productNameTextSize" format="float"/>
+        <attr name="productPriceTextSize" format="float"/>
+        <attr name="productSoldTextSize" format="float"/>
+        <attr name="productOldPriceTextSize" format="float"/>
+        <attr name="productType" format="enum">
+            <enum name="topProduct" value="0"/>
+            <enum name="saleProduct" value="1"/>
+            <enum name="viewedProduct" value="2"/>
+            <enum name="countryProduct" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>
