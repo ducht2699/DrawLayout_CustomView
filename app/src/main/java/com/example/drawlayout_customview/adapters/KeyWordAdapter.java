@@ -30,7 +30,7 @@ public class KeyWordAdapter extends RecyclerView.Adapter<KeyWordAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.m_tvKeyWord.setText(keyWords.get(position));
+        holder.setData(keyWords.get(position));
     }
 
     @Override
@@ -43,6 +43,10 @@ public class KeyWordAdapter extends RecyclerView.Adapter<KeyWordAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             m_tvKeyWord = itemView.findViewById(R.id.tv_keyword);
+        }
+
+        public void setData(String s) {
+            m_tvKeyWord.setText(s);
         }
     }
 }

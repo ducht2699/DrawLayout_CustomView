@@ -34,24 +34,7 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LoadMoreItem item = loadMoreItems.get(position);
-        holder.m_imvIcon.setImageDrawable(context.getDrawable(item.getM_iIcon()));
-        holder.m_tvProductName.setText(item.getM_sName());
-        double price = item.getM_lPrice();
-        if (item.isSale()) {
-            holder.m_tvOldPrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
-            holder.m_tvOldPrice.setPaintFlags(holder.m_tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            price -= price * (item.getM_fSalePercent() / 100d);
-            holder.m_tvSalePrice.setText(String.valueOf(price) + "¥");
-            holder.m_tvSalePercent.setText("-" + String.valueOf((long) item.getM_fSalePercent()) + "%");
-
-        } else {
-            holder.m_imvTagBackground.setVisibility(View.GONE);
-            holder.m_tvSalePercent.setVisibility(View.GONE);
-            holder.m_tvOldPrice.setVisibility(View.GONE);
-        }
-        holder.m_tvSalePrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
-        holder.m_tvLocation.setText(item.getM_sLocation());
-        holder.m_tvSoldCount.setText("Đã bán " + String.valueOf(item.getM_iSoldCount()));
+        holder.setData(item);
     }
 
     private String standardizedMoney(String amount) {
@@ -89,6 +72,27 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
             m_tvSoldCount = itemView.findViewById(R.id.tv_product_sold);
             m_tvLocation = itemView.findViewById(R.id.tv_location);
             m_imvTagBackground = itemView.findViewById(R.id.imv_tag_background);
+        }
+
+        public void setData(LoadMoreItem item) {
+            m_imvIcon.setImageDrawable(context.getDrawable(item.getM_iIcon()));
+            m_tvProductName.setText(item.getM_sName());
+            double price = item.getM_lPrice();
+            if (item.isSale()) {
+                m_tvOldPrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
+                m_tvOldPrice.setPaintFlags(m_tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                price -= price * (item.getM_fSalePercent() / 100d);
+                m_tvSalePrice.setText(String.valueOf(price) + "¥");
+                m_tvSalePercent.setText("-" + String.valueOf((long) item.getM_fSalePercent()) + "%");
+
+            } else {
+                m_imvTagBackground.setVisibility(View.GONE);
+                m_tvSalePercent.setVisibility(View.GONE);
+                m_tvOldPrice.setVisibility(View.GONE);
+            }
+            m_tvSalePrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
+            m_tvLocation.setText(item.getM_sLocation());
+            m_tvSoldCount.setText("Đã bán " + String.valueOf(item.getM_iSoldCount()));
         }
     }
 }

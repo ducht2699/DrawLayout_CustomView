@@ -33,8 +33,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CategoryItem categoryItem = categoryItems.get(position);
-        holder.m_imvIcon.setBackgroundResource(categoryItem.getM_iIcon());
-        holder.m_tvName.setText(categoryItem.getM_sName());
+        holder.setData(categoryItem);
     }
 
     @Override
@@ -50,6 +49,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             super(itemView);
             m_imvIcon = itemView.findViewById(R.id.imv_category_icon);
             m_tvName = itemView.findViewById(R.id.tv_category_name);
+        }
+
+        public void setData(CategoryItem categoryItem) {
+            m_imvIcon.setBackgroundResource(categoryItem.getM_iIcon());
+            m_tvName.setText(categoryItem.getM_sName());
         }
     }
 }
