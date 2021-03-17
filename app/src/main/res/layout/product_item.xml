@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -88,28 +84,30 @@
                 tools:ignore="SmallSp" />
         </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_sale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_product_sale_tag"
-        android:elevation="2dp"
-        android:gravity="center"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnusedAttribute">
-
-        <TextView
-            android:id="@+id/tv_discount_percent"
+        <LinearLayout
+            android:id="@+id/ll_sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/sale_percent"
-            android:textColor="@color/white"
-            android:textSize="9sp"
-            android:translationX="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_product_sale_tag"
+            android:elevation="2dp"
+            android:gravity="center"
             android:visibility="visible"
-            tools:ignore="RtlSymmetry,SmallSp" />
-    </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:ignore="UnusedAttribute">
+
+            <TextView
+                android:id="@+id/tv_discount_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sale_percent"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:translationX="3dp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry,SmallSp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

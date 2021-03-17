@@ -17,8 +17,8 @@ import com.example.drawlayout_customview.models.item_list.others.LoadMoreItem;
 import java.util.List;
 
 public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHolder> {
-    private List<LoadMoreItem> loadMoreItems;
-    private Context context;
+    private final List<LoadMoreItem> loadMoreItems;
+    private final Context context;
 
     public LoadMoreAdapter(List<LoadMoreItem> loadMoreItems, Context context) {
         this.loadMoreItems = loadMoreItems;
@@ -38,14 +38,14 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
     }
 
     private String standardizedMoney(String amount) {
-        StringBuffer sb = new StringBuffer("");
+        StringBuffer sb = new StringBuffer();
         int count = 0;
         for (int i = amount.length() - 1; i >= 0; i--) {
             if (count % 3 == 0 && count != 0) {
                 sb.append(".");
                 count = 0;
             }
-            sb.append(String.valueOf(amount.charAt(i)));
+            sb.append(amount.charAt(i));
             count++;
         }
         sb.reverse();
@@ -59,8 +59,14 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView m_imvIcon, m_imvTagBackground;
-        private TextView m_tvSalePercent, m_tvProductName, m_tvOldPrice, m_tvSalePrice, m_tvSoldCount, m_tvLocation;
+        private final ImageView m_imvIcon;
+        private final ImageView m_imvTagBackground;
+        private final TextView m_tvSalePercent;
+        private final TextView m_tvProductName;
+        private final TextView m_tvOldPrice;
+        private final TextView m_tvSalePrice;
+        private final TextView m_tvSoldCount;
+        private final TextView m_tvLocation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,8 +88,8 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
                 m_tvOldPrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
                 m_tvOldPrice.setPaintFlags(m_tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 price -= price * (item.getM_fSalePercent() / 100d);
-                m_tvSalePrice.setText(String.valueOf(price) + "¥");
-                m_tvSalePercent.setText("-" + String.valueOf((long) item.getM_fSalePercent()) + "%");
+                m_tvSalePrice.setText(price + "¥");
+                m_tvSalePercent.setText("-" + (long) item.getM_fSalePercent() + "%");
 
             } else {
                 m_imvTagBackground.setVisibility(View.GONE);
@@ -92,7 +98,7 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
             }
             m_tvSalePrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
             m_tvLocation.setText(item.getM_sLocation());
-            m_tvSoldCount.setText("Đã bán " + String.valueOf(item.getM_iSoldCount()));
+            m_tvSoldCount.setText("Đã bán " + item.getM_iSoldCount());
         }
     }
 }

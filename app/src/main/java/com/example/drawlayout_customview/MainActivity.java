@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setContentRecyclerView() {
-//        setBanner();
+        setBanner();
         setTopSoldProduct();
         setSaleProduct();
         setViewedProduct();
@@ -145,7 +145,8 @@ public class MainActivity extends AppCompatActivity {
         rcvProductList.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rcvProductList.setLayoutManager(linearLayoutManager);
-
+        rcvProductList.setNestedScrollingEnabled(false);
+        rcvProductList.setItemViewCacheSize(20);
     }
 
     private void setTopSoldProduct() {
