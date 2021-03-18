@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drawlayout_customview.R;
-import com.example.drawlayout_customview.models.item_list.others.CategoryItem;
+import com.example.drawlayout_customview.models.Item_main_view.CategoryItem;
 
 import java.util.List;
 
@@ -52,8 +52,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
 
         public void setData(CategoryItem categoryItem) {
-            m_imvIcon.setBackgroundResource(categoryItem.getM_iIcon());
-            m_tvName.setText(categoryItem.getM_sName());
+
         }
     }
 }

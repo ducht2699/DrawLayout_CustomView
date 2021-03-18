@@ -12,16 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drawlayout_customview.R;
-import com.example.drawlayout_customview.models.item_list.others.LoadMoreItem;
+import com.example.drawlayout_customview.models.Item_main_view.LoadMoreProductItem;
 
 import java.util.List;
 
 public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHolder> {
-    private final List<LoadMoreItem> loadMoreItems;
+    private final List<LoadMoreProductItem> LoadMoreProductItems;
     private final Context context;
 
-    public LoadMoreAdapter(List<LoadMoreItem> loadMoreItems, Context context) {
-        this.loadMoreItems = loadMoreItems;
+    public LoadMoreAdapter(List<LoadMoreProductItem> LoadMoreProductItems, Context context) {
+        this.LoadMoreProductItems = LoadMoreProductItems;
         this.context = context;
     }
 
@@ -33,7 +33,7 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        LoadMoreItem item = loadMoreItems.get(position);
+        LoadMoreProductItem item = LoadMoreProductItems.get(position);
         holder.setData(item);
     }
 
@@ -55,7 +55,7 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return loadMoreItems.size();
+        return LoadMoreProductItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -80,25 +80,8 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
             m_imvTagBackground = itemView.findViewById(R.id.imv_tag_background);
         }
 
-        public void setData(LoadMoreItem item) {
-            m_imvIcon.setImageDrawable(context.getDrawable(item.getM_iIcon()));
-            m_tvProductName.setText(item.getM_sName());
-            double price = item.getM_lPrice();
-            if (item.isSale()) {
-                m_tvOldPrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
-                m_tvOldPrice.setPaintFlags(m_tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                price -= price * (item.getM_fSalePercent() / 100d);
-                m_tvSalePrice.setText(price + "¥");
-                m_tvSalePercent.setText("-" + (long) item.getM_fSalePercent() + "%");
+        public void setData(LoadMoreProductItem item) {
 
-            } else {
-                m_imvTagBackground.setVisibility(View.GONE);
-                m_tvSalePercent.setVisibility(View.GONE);
-                m_tvOldPrice.setVisibility(View.GONE);
-            }
-            m_tvSalePrice.setText(standardizedMoney(String.valueOf((long) price)) + "¥");
-            m_tvLocation.setText(item.getM_sLocation());
-            m_tvSoldCount.setText("Đã bán " + item.getM_iSoldCount());
         }
     }
 }
