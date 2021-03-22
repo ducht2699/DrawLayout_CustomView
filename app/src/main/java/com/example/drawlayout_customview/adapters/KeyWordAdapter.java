@@ -14,8 +14,8 @@ import com.example.drawlayout_customview.R;
 import java.util.List;
 
 public class KeyWordAdapter extends RecyclerView.Adapter<KeyWordAdapter.ViewHolder> {
-    private List<String> keyWords;
-    private Context context;
+    private final List<String> keyWords;
+    private final Context context;
 
     public KeyWordAdapter(List<String> keyWords, Context context) {
         this.keyWords = keyWords;
@@ -39,7 +39,7 @@ public class KeyWordAdapter extends RecyclerView.Adapter<KeyWordAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView m_tvKeyWord;
+        private final TextView m_tvKeyWord;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             m_tvKeyWord = itemView.findViewById(R.id.tv_keyword);

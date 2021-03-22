@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drawlayout_customview.R;
 import com.example.drawlayout_customview.models.Item_main_view.CategoryItem;
+import com.example.drawlayout_customview.utils.Utils;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
-    private List<CategoryItem> categoryItems;
-    private Context context;
+    private final List<CategoryItem> categoryItems;
+    private final Context context;
 
     public CategoryAdapter(List<CategoryItem> categoryItems, Context context) {
         this.categoryItems = categoryItems;
@@ -42,8 +43,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView m_imvIcon;
-        private TextView m_tvName;
+        private final ImageView m_imvIcon;
+        private final TextView m_tvName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,7 +53,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
 
         public void setData(CategoryItem categoryItem) {
-
+            Utils.setImageURL(context, m_imvIcon, categoryItem.getImageUrl());
+            m_tvName.setText(categoryItem.getTitle());
         }
     }
 }

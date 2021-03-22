@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drawlayout_customview.R;
 import com.example.drawlayout_customview.models.Item_main_view.LoadMoreProductItem;
+import com.example.drawlayout_customview.utils.Utils;
 
 import java.util.List;
+
+import okhttp3.internal.Util;
 
 public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHolder> {
     private final List<LoadMoreProductItem> LoadMoreProductItems;
@@ -37,20 +40,6 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
         holder.setData(item);
     }
 
-    private String standardizedMoney(String amount) {
-        StringBuffer sb = new StringBuffer();
-        int count = 0;
-        for (int i = amount.length() - 1; i >= 0; i--) {
-            if (count % 3 == 0 && count != 0) {
-                sb.append(".");
-                count = 0;
-            }
-            sb.append(amount.charAt(i));
-            count++;
-        }
-        sb.reverse();
-        return sb.toString();
-    }
 
 
     @Override
@@ -81,7 +70,20 @@ public class LoadMoreAdapter extends RecyclerView.Adapter<LoadMoreAdapter.ViewHo
         }
 
         public void setData(LoadMoreProductItem item) {
-
+            Utils.setImageURL(context, m_imvIcon, item.getImages().get(0));
+            m_tvProductName.setText(item.getName());
+            m_tvSoldCount.setText("Đã bán " + String.valueOf(item.getViewCount()));
+            if (item.getDiscountPercent() == 0) {
+                m_imvTagBackground.setVisibility(View.GONE);
+                m_tvSalePercent.setVisibility(View.GONE);
+                m_tvOldPrice.setVisibility(View.GONE);
+                m_tvSalePrice.setText(Utils.standardizedMoney(String.valueOf((long)item.getBasePrice())));
+            } else {
+                m_tvSalePercent.setText("-" + (int)item.getDiscountPercent() + "%");
+                m_tvOldPrice.setText(Utils.standardizedMoney(String.valueOf((long)item.getBasePrice())));
+                Utils.setStrikeTextView(m_tvOldPrice);
+                m_tvSalePrice.setText(Utils.standardizedMoney(String.valueOf((long)item.getFinalPrice())));
+            }
         }
     }
 }

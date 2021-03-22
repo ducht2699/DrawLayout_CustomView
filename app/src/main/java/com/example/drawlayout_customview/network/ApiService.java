@@ -10,13 +10,14 @@ import com.example.drawlayout_customview.models.response.ProductsResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("/jappserver/s/v1/banner/get-product")
     Call<BannerResponse> getBanner(@Header("Authorization") String value);
 
-    @GET("//jappserver/s/v1/product/get-product-hot")
-    Call<ProductsResponse> getProducts();
+    @GET("/jappserver/s/v1/product/get-product-hot")
+    Call<ProductsResponse> getProducts(@Header("Authorization") String token);
 
     @GET("/jappserver/s/v1/product/get-category")
     Call<CategoryResponse> getCategory();
@@ -24,6 +25,6 @@ public interface ApiService {
     @GET("/jappserver/s/v1/word/get-word-hot?wordType=PRODUCT")
     Call<HOTWordResponse> getHOTWord();
 
-    @GET("/jappserver/s/v1/product/get-products?categoryId&name&minPrice=&maxPrice=&orderType&orderHotSale&page=0&deleted&regionProductType&saleoff&hot")
-    Call<LoadMoreProductResponse> getLoadMoreProduct();
+    @GET("/jappserver/s/v1/product/get-products")
+    Call<LoadMoreProductResponse> getLoadMoreProduct(@Header("Authorization") String token, @Query("page") int page);
 }
